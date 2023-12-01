@@ -3,11 +3,9 @@
 (function (w, d) {
     'use strict';
 
-    var TABLE_NAME = 'hljs-ln',
+    var HLJS_LN_NAME = 'hljs-ln',
         LINE_NAME = 'hljs-ln-line',
-        NUMBERS_BLOCK_NAME = 'hljs-ln-numbers',
         NUMBER_LINE_NAME = 'hljs-ln-n',
-        DATA_ATTR_NAME = 'data-line-number',
         BREAK_LINE_REGEXP = /\r\n|\r|\n/g;
 
     if (w.hljs) {
@@ -25,7 +23,7 @@
         var css = d.createElement('style');
         css.type = 'text/css';
         css.innerHTML = `
-            .${TABLE_NAME} { display: block; }
+            .${HLJS_LN_NAME} { display: block; }
             .${LINE_NAME}  { counter-increment: line-number-count; }
             .${NUMBER_LINE_NAME} {
                 display: inline-block;
@@ -106,9 +104,13 @@
             var digitCount = Math.trunc(Math.log10(lines.length));
 
             for (var i = 0, l = lines.length; i < l; i++) {
+                var boringClass = '';
+                if (lines[i].includes('boring')) {
+                    boringClass = 'boring';
+                }
                 html += `<div class="${LINE_NAME}"
                     ><div
-                        class="${NUMBER_LINE_NAME}"
+                        class="${NUMBER_LINE_NAME} ${boringClass}"
                         style="width: ${digitCount}em;"
                     ></div>${
                         lines[i].length > 0 ? lines[i] : '&#13;'
@@ -116,7 +118,7 @@
             }
 
             return `<div
-                class="${TABLE_NAME}"
+                class="${HLJS_LN_NAME}"
                 style="counter-reset: line-number-count ${options.startFrom}"
             >${html}</div>`;
         }
