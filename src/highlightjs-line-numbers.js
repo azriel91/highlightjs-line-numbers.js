@@ -113,7 +113,7 @@
                         class="${NUMBER_LINE_NAME} ${boringClass}"
                         style="width: ${digitCount}em;"
                     ></div>${
-                        lines[i].length > 0 ? lines[i] : '&#13;'
+                        lines[i].length > 0 ? lines[i] + "\n" : '&#13;'
                     }</div>`;
             }
 
