@@ -108,13 +108,17 @@
                 if (lines[i].includes('boring')) {
                     boringClass = 'boring';
                 }
+                var lineContent;
+                if (i < l - 1) {
+                    lineContent = lines[i].length > 0 ? lines[i] + "\n" : '&#13;';
+                } else {
+                    lineContent = lines[i].length > 0 ? lines[i]: '&#13;';
+                }
                 html += `<div class="${LINE_NAME}"
                     ><div
                         class="${NUMBER_LINE_NAME} ${boringClass}"
                         style="width: ${digitCount}em;"
-                    ></div>${
-                        lines[i].length > 0 ? lines[i] + "\n" : '&#13;'
-                    }</div>`;
+                    ></div>${lineContent}</div>`;
             }
 
             return `<div
