@@ -110,9 +110,9 @@
                 }
                 var lineContent;
                 if (i < l - 1) {
-                    lineContent = lines[i].length > 0 ? lines[i] + "\n" : '&#13;';
+                    lineContent = lines[i] + '\n';
                 } else {
-                    lineContent = lines[i].length > 0 ? lines[i]: '&#13;';
+                    lineContent = lines[i].length > 0 ? lines[i]: '\n';
                 }
                 html += `<div class="${LINE_NAME}"
                     ><div
